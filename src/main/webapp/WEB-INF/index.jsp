@@ -9,6 +9,6 @@
 <body>
 	<h1>Welcome to Lookify!</h1>
 	
-	<h3><a href = "#">Start Looking!</a></h3>
+	<a href = "/dashboard">Start Looking!</a>
 </body>
 </html>

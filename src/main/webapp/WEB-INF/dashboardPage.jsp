@@ -9,15 +9,25 @@
 <title>Lookify Dashboard</title>
 </head>
 <body>
-	<a href = "#">Add New</a>
+	<a href = "/songs/new">Add New</a>
 	<a href = "#">Top Songs</a>
 	
-	<form:form method = "POST">
+	<table class="table">
+    	<tr>
+    		<td>Name</td>
+    		<td>Rating</td>
+    		<td>Action</td>
+    	</tr>
+    <c:forEach items="${songs}" var="song" varStatus="loop">
+        <tr>        
+		    <td><a href = "/songs/${song.id}"><c:out value="${song.name}"/></a></td>
+		    <td><c:out value="${song.rating}"/></td>
+		    <td>
+		    	<a href="/songs/delete/${song.id}">Delete</a>
+		    </td>
+        </tr>
+    </c:forEach>
+    </table>
 
-		<form:errors path = "name"/>
-		<form:input path="name"/>
-		
-		<input type = "submit" value = "Search Artists"/>
-	</form:form>
 </body>
 </html>

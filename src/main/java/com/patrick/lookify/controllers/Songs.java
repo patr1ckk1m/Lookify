@@ -36,6 +36,23 @@ public class Songs {
 		return "dashboardPage.jsp";
 	}
 	
+	@PostMapping("/search/{artist}")
+	public String searchByArtist(@Valid @ModelAttribute("artistsearch") Song song, @PathVariable("artist") String artist, BindingResult result) {
+		List<Song> songs = songService.searchByArtist(artist);
+		if (songs == null) {
+			return "redirect:/dashboard";
+		} else {
+			return "redirect:/search/{artist}";
+		}
+	}
+	
+	@RequestMapping("/search/{artist}")
+	public String displayResult(Model model, @PathVariable("artist") String artist) {
+		List<Song> songs = songService.searchByArtist(artist);
+		model.addAttribute("songs", songs);
+		return "searchResult.jsp";
+	}
+	
 	@RequestMapping("/songs/{id}")
 	public String findSongById(Model model, @PathVariable("id") Long id) {
 		Song song = songService.findSongById(id);

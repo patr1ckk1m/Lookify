@@ -31,4 +31,8 @@ public class SongService {
 	public void destroySong(Long id) {
 		songRepository.delete(id);
 	}
+	
+	public List<Song> searchByArtist(String artist){
+		return songRepository.findByArtistContaining(artist);
+	}
 }

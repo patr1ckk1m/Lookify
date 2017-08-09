@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+
 import com.patrick.lookify.models.Song;
 import com.patrick.lookify.repositories.SongRepository;
 
@@ -22,6 +23,10 @@ public class SongService {
 	public List<Song> allSongs(){
 		return (List<Song>) songRepository.findAll();
 	}
+	
+   public Song findSongById(Long id) {
+    	return songRepository.findOne(id);
+    }
 	
 	public void destroySong(Long id) {
 		songRepository.delete(id);

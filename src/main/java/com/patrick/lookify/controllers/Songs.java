@@ -36,6 +36,13 @@ public class Songs {
 		return "dashboardPage.jsp";
 	}
 	
+	@RequestMapping("/songs/{id}")
+	public String findSongById(Model model, @PathVariable("id") Long id) {
+		Song song = songService.findSongById(id);
+		model.addAttribute("song", song);
+		return "showSong.jsp";
+	}
+	
 	@RequestMapping("/songs/new")
 	public String addSong(@ModelAttribute("song") Song song, @ModelAttribute("errors") String errors, Model model) {
 		model.addAttribute("errors", errors);
